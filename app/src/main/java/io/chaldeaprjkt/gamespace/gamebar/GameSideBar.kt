@@ -283,7 +283,6 @@ class GameSidebar(
         try {
             Process.setThreadPriority(Process.THREAD_PRIORITY_DISPLAY)
             Process.setThreadGroupAndCpuset(Process.myTid(), Process.THREAD_GROUP_SYSTEM)
-            Process.setProcessGroup(Process.myPid(), Process.THREAD_GROUP_SYSTEM)
             wm.addView(pv, panelLayoutParam)
             gameBarView.visibility = View.GONE
         } catch (_: Exception) {
@@ -311,7 +310,6 @@ class GameSidebar(
         runCatching {
             Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND)
             Process.setThreadGroupAndCpuset(Process.myTid(), Process.THREAD_GROUP_BACKGROUND)
-            Process.setProcessGroup(Process.myPid(), Process.THREAD_GROUP_BACKGROUND)
         }
 
         if (!shouldClose) {

@@ -47,7 +47,6 @@ class GameSpaceService : Hilt_GameSpaceService() {
             SessionService.start(applicationContext, packageName)
             Process.setThreadPriority(Process.THREAD_PRIORITY_DISPLAY)
             Process.setThreadGroupAndCpuset(Process.myTid(), Process.THREAD_GROUP_SYSTEM)
-            Process.setProcessGroup(Process.myPid(), Process.THREAD_GROUP_SYSTEM)
             gameOptimization.optimizeGameLaunch(packageName)
         }
 
@@ -56,7 +55,6 @@ class GameSpaceService : Hilt_GameSpaceService() {
             SessionService.stop(applicationContext)
             Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND)
             Process.setThreadGroupAndCpuset(Process.myTid(), Process.THREAD_GROUP_BACKGROUND)
-            Process.setProcessGroup(Process.myPid(), Process.THREAD_GROUP_BACKGROUND)
         }
     }
 
@@ -66,7 +64,6 @@ class GameSpaceService : Hilt_GameSpaceService() {
         registerCallback()
         Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND)
         Process.setThreadGroupAndCpuset(Process.myTid(), Process.THREAD_GROUP_BACKGROUND)
-        Process.setProcessGroup(Process.myPid(), Process.THREAD_GROUP_BACKGROUND)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
